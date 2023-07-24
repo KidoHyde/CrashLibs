@@ -1,3 +1,3 @@
 # CrashRefrences
 A library for Crash's ultrakill functions
-heavily based on [url=https://github.com/wafflethings/Atlas]Waffle's Atlas Library[/url]
+heavily based on Waffle's Atlas Library](https://github.com/wafflethings/Atlas) with additions for adding new weapon slots
