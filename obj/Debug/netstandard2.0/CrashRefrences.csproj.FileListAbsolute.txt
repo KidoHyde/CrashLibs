@@ -1,0 +1,12 @@
+C:\Users\AngryBlackCat\source\repos\CrashRefrences\bin\Debug\netstandard2.0\CrashRefrences.deps.json
+C:\Users\AngryBlackCat\source\repos\CrashRefrences\bin\Debug\netstandard2.0\CrashRefrences.dll
+C:\Users\AngryBlackCat\source\repos\CrashRefrences\bin\Debug\netstandard2.0\CrashRefrences.pdb
+C:\Users\AngryBlackCat\source\repos\CrashRefrences\bin\Debug\netstandard2.0\Assembly-CSharp.dll
+C:\Users\AngryBlackCat\source\repos\CrashRefrences\obj\Debug\netstandard2.0\CrashRefrences.csprojAssemblyReference.cache
+C:\Users\AngryBlackCat\source\repos\CrashRefrences\obj\Debug\netstandard2.0\PluginInfo.cs
+C:\Users\AngryBlackCat\source\repos\CrashRefrences\obj\Debug\netstandard2.0\CrashRefrences.csproj.CoreCompileInputs.cache
+C:\Users\AngryBlackCat\source\repos\CrashRefrences\obj\Debug\netstandard2.0\CrashRefrences.AssemblyInfoInputs.cache
+C:\Users\AngryBlackCat\source\repos\CrashRefrences\obj\Debug\netstandard2.0\CrashRefrences.AssemblyInfo.cs
+C:\Users\AngryBlackCat\source\repos\CrashRefrences\obj\Debug\netstandard2.0\CrashRefrences.csproj.CopyComplete
+C:\Users\AngryBlackCat\source\repos\CrashRefrences\obj\Debug\netstandard2.0\CrashRefrences.dll
+C:\Users\AngryBlackCat\source\repos\CrashRefrences\obj\Debug\netstandard2.0\CrashRefrences.pdb
