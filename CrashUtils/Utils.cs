@@ -65,7 +65,7 @@ namespace CrashUtils
          public static List<GameObject> FindSceneObjects(string sceneName)
          {
              List<GameObject> objs = new List<GameObject>();
-             foreach (GameObject obj in GameObject.FindObjectsOfType<GameObject>())
+             foreach (GameObject obj in Resources.FindObjectsOfTypeAll<GameObject>())
              {
                  if (obj.scene.name == sceneName)
                  {
