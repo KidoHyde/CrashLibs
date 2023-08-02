@@ -16,11 +16,6 @@ namespace CrashUtils.WeaponManager.WeaponSetup
         internal static List<WeaponSuper> WeaponAdditionList = new List<WeaponSuper>();
         internal static Dictionary<string, int> WeaponOwned = new Dictionary<string, int>();
 
-        private static List<List<GameObject>> SlotToList;
-        private static List<GameObject> WeaponToList = new List<GameObject>();
-
-
-
         public static void LoadData()
         {
             if (File.Exists(SavePath + GameProgressSaver.currentSlot))
@@ -113,17 +108,9 @@ namespace CrashUtils.WeaponManager.WeaponSetup
             [HarmonyPostfix]
             public static void GiveGuns(GunSetter __instance)
             {
-                SlotToList = new List<List<GameObject>>
-                {
-                    { __instance.GetComponent<GunControl>().slot1 },
-                    { __instance.GetComponent<GunControl>().slot2 },
-                    { __instance.GetComponent<GunControl>().slot3 },
-                    { __instance.GetComponent<GunControl>().slot4 },
-                    { __instance.GetComponent<GunControl>().slot5 },
-                    { __instance.GetComponent<GunControl>().slot6 }
-                };
+				List<List<GameObject>> SlotToList = __instance.GetComponent<GunControl>().slots;
 
-                foreach (WeaponSuper weapon in WeaponList)
+				foreach (WeaponSuper weapon in WeaponList)
                 {
                     bool IsFist = weapon.GetType() == typeof(Fist) || weapon.GetType().IsSubclassOf(typeof(Fist));
 
@@ -144,10 +131,8 @@ namespace CrashUtils.WeaponManager.WeaponSetup
 
                 foreach (List<GameObject> slot in SlotToList)
                 {
-                    while (slot.Contains(null))
-                    {
-                        slot.Remove(null);
-                    }
+                    while (slot.Remove(null))
+                        ;
                 }
             }
 
@@ -215,25 +200,25 @@ namespace CrashUtils.WeaponManager.WeaponSetup
             {
                 Debug.Log("Got here");
 
-
                 
                 foreach (WeaponSuper weapon in WeaponAdditionList)
                 {
                     GameObject created = weapon.Create(__instance.transform);
                     created.SetActive(false);
                     created.name = weapon.Pref();
-                    WeaponToList.Add(created);
-                    if (!__instance.slots.Contains(WeaponToList))
-                    {
-                        __instance.slots.Insert(weapon.WheelOrder(), WeaponToList);
-                    }
+
+                    // Add empty slots until the slot for the weapon is created
+                    while (__instance.slots.Count < (weapon.WheelOrder() + 1))
+                        __instance.slots.Add(new List<GameObject>());
+                    __instance.slots[weapon.WheelOrder()].Add(created);
                 }
 
 
 
-                for (int i = __instance.slots.Count - 1; i >= 0; i--)
+                foreach (var slot in __instance.slots)
                 {
-                    __instance.slots[i] = __instance.slots[i].Where(go => go != null).ToList();
+                    while (slot.Remove(null))
+                        ;
                 }
                 
 

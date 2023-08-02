@@ -31,7 +31,7 @@ namespace CrashUtils
 
          public static string ModPath()
          {
-             return Assembly.GetExecutingAssembly().Location.Substring(0, Assembly.GetExecutingAssembly().Location.LastIndexOf(Path.DirectorySeparatorChar));
+             return Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
          }
      }
 
