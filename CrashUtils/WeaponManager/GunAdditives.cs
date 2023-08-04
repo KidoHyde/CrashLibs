@@ -15,6 +15,7 @@ namespace CrashUtils.WeaponManager.WeaponSetup
         internal static List<WeaponSuper> WeaponList = new List<WeaponSuper>();
         internal static List<WeaponSuper> WeaponAdditionList = new List<WeaponSuper>();
         internal static Dictionary<string, int> WeaponOwned = new Dictionary<string, int>();
+        internal static int SlotVar = 0;
 
         public static void LoadData()
         {
@@ -220,14 +221,31 @@ namespace CrashUtils.WeaponManager.WeaponSetup
                     while (slot.Remove(null))
                         ;
                 }
-                
 
+                //this.SwitchWeapon(6, this.slot6, false, true, false);
+                //this.SwitchWeapon(this.lastUsedSlot, this.slots[this.lastUsedSlot - 1], true, false, false);
+
+                //properly sets last used weapon in a hacky way if it's out of the "Standard" array index
+                if (SlotVar > 6)
+                {
+                    __instance.SwitchWeapon(SlotVar, __instance.slots[SlotVar - 1]);
+                }
 
                 __instance.UpdateWeaponList(true);
 
             }
 
+            [HarmonyPatch(typeof(GunControl), nameof(GunControl.Start))]
+            [HarmonyPrefix]
+            public static void SaveLastWeapon(GunControl __instance)
+            {
+               
+                SlotVar = PlayerPrefs.GetInt("CurSlo", 1);
+
+            }
+
             
+
 
         }
     }
